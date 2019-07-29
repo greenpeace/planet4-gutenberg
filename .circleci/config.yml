@@ -1,0 +1,98 @@
+---
+version: 2
+
+defaults: &defaults
+  docker:
+    - image: gcr.io/planet-4-151612/p4-builder:latest
+
+job_environments:
+  common_environment: &common_environment
+    APP_HOSTPATH: gutenberg
+    CONTAINER_PREFIX: planet4-gutenberg
+    WP_DB_NAME_PREFIX: planet4-gutenber_wordpress
+  develop_environment: &develop_environment
+    APP_ENVIRONMENT: development
+    APP_HOSTNAME: k8s.p4.greenpeace.org
+    CLOUDSQL_INSTANCE: p4-develop-k8s
+    GOOGLE_PROJECT_ID: planet-4-151612
+    GCLOUD_CLUSTER: p4-development
+    HELM_NAMESPACE: develop
+    HELM_RELEASE: planet4-gutenberg
+    NEWRELIC_APPNAME: P4 gutenberg Development
+    WP_DB_NAME: planet4-gutenber_wordpress_develop
+    WP_STATELESS_BUCKET: planet4-gutenberg-stateless-develop
+
+job_definitions:
+  build_steps: &build_steps
+    working_directory: ~/
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - restore_cache:
+          keys:
+            - composer-v5-{{ .Branch }}-{{ .Revision }}-{{ .BuildNum }}
+            - composer-v5-{{ .Branch }}-{{ .Revision }}
+            - composer-v5-{{ .Branch }}
+            - composer-v5
+      - run: |
+          if [[ -d source/cache ]]; then ls -al source/cache; fi
+      - run: activate-gcloud-account.sh
+      - run: mkdir -p /tmp/workspace/var
+      - run: mkdir -p /tmp/workspace/src
+      - run: echo "${CIRCLE_BUILD_NUM}" > /tmp/workspace/var/circle-build-num
+      - run: make
+      - run:
+          name: Notify failure
+          when: on_fail
+          command: TYPE="Build" notify-job-failure.sh
+      - save_cache:
+          key: composer-v5-{{ .Branch }}-{{ .Revision }}-{{ .BuildNum }}
+          paths:
+            - source/cache
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - var
+            - src
+
+  deploy_steps: &deploy_steps
+    working_directory: ~/
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: activate-gcloud-account.sh
+      - run: BUILD_TAG=build-$(cat /tmp/workspace/var/circle-build-num) make -j2 deploy
+
+jobs:
+  build-branch:
+    <<: *defaults
+    environment:
+      <<: *common_environment
+      <<: *develop_environment
+    <<: *build_steps
+
+  deploy-develop:
+    <<: *defaults
+    environment:
+      <<: *common_environment
+      <<: *develop_environment
+    <<: *deploy_steps
+
+
+workflow_definitions:
+  develop_common: &develop_common
+    context: org-global
+    filters:
+      branches:
+        only: develop
+
+workflows:
+  version: 2
+  develop:
+    jobs:
+      - build-branch:
+          <<: *develop_common
+      - deploy-develop:
+          <<: *develop_common
+          requires:
+            - build-branch
