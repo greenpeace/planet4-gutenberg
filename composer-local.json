@@ -6,9 +6,9 @@
 		"greenpeace/planet4-child-theme" : "dev-develop",
 		"greenpeace/planet4-master-theme" : "dev-gutenberg",
 		"greenpeace/planet4-plugin-blocks" : "dev-develop",
-		"greenpeace/planet4-plugin-gutenberg-blocks" : "dev-add-lodash-plugin",
+		"greenpeace/planet4-plugin-gutenberg-blocks" : "dev-develop",
 		"greenpeace/planet4-plugin-gutenberg-engagingnetworks" : "dev-master",
-		"wpackagist-plugin/flow-flow-social-streams": "3.1.30"
+		"wpackagist-plugin/flow-flow-social-streams": "3.1.*"
 	},
 	"scripts": {
 		"site:custom" : []
