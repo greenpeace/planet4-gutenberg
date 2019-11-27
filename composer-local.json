@@ -3,11 +3,8 @@
 	"description": "Greenpeace P4 gutenberg",
 	"license": "MIT",
 	"require": {
-		"greenpeace/planet4-child-theme" : "dev-develop",
-		"greenpeace/planet4-master-theme" : "dev-develop",
-		"greenpeace/planet4-plugin-gutenberg-blocks" : "dev-develop",
-		"greenpeace/planet4-plugin-gutenberg-engagingnetworks" : "dev-develop",
-		"wpackagist-plugin/flow-flow-social-streams": "3.1.*"
+		"greenpeace/planet4-child-theme" : "0.*",
+		"greenpeace/planet4-plugin-gutenberg-blocks" : "dev-all-blocks"
 	},
 	"scripts": {
 		"site:custom" : []
