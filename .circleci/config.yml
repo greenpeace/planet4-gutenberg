@@ -12,7 +12,7 @@ job_environments:
     WP_DB_NAME_PREFIX: planet4-gutenber_wordpress
   develop_environment: &develop_environment
     APP_ENVIRONMENT: development
-    APP_HOSTNAME: k8s.p4.greenpeace.org
+    APP_HOSTNAME: www-dev.greenpeace.org
     CLOUDSQL_INSTANCE: p4-develop-k8s
     GOOGLE_PROJECT_ID: planet-4-151612
     GCLOUD_CLUSTER: p4-development
