@@ -34,7 +34,6 @@ job_environments:
       NEWRELIC_APPNAME: P4 gutenberg Development
       WP_DB_NAME: planet4-gutenber_wordpress_develop
       WP_STATELESS_BUCKET: planet4-gutenberg-stateless-develop
-      WP_VERSION: 5.9-beta1
 
 commands:
   approve_job:
