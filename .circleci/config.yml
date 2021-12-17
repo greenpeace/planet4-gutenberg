@@ -31,7 +31,6 @@ job_environments:
       GCLOUD_CLUSTER: p4-development
       HELM_NAMESPACE: develop
       HELM_RELEASE: planet4-gutenberg
-      NEWRELIC_APPNAME: P4 gutenberg Development
       WP_DB_NAME: planet4-gutenber_wordpress_develop
       WP_STATELESS_BUCKET: planet4-gutenberg-stateless-develop
 
