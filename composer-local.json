@@ -11,6 +11,6 @@
 		"site:custom" : []
 	},
 	"extra": {
-		"wp-version": "5.9-beta3"
+		"wp-version": "5.9-RC1"
 	}
 }
