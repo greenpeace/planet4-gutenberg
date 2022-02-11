@@ -3,9 +3,8 @@
 	"description": "Greenpeace P4 gutenberg",
 	"license": "MIT",
 	"require": {
-		"greenpeace/planet4-plugin-gutenberg-blocks" : "dev-all-blocks",
 		"plugins/gravityforms": "*",
-        "plugins/gravityformsquiz": "*"
+		"plugins/gravityformsquiz": "*"
 	},
 	"scripts": {
 		"site:custom" : []
