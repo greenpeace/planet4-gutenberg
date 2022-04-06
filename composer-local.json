@@ -8,8 +8,5 @@
 	},
 	"scripts": {
 		"site:custom" : []
-	},
-	"extra": {
-		"wp-version": "5.9"
 	}
 }
