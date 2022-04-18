@@ -7,7 +7,7 @@
     "plugins/gravityformsquiz": "*"
   },
   "extra": {
-    "wp-version": "5.9"
+    "wp-version": "6.0-beta1"
   },
   "scripts": {
     "site:custom" : []
