@@ -1,12 +1,15 @@
 {
-	"name": "greenpeace/planet4-gutenberg",
-	"description": "Greenpeace P4 gutenberg",
-	"license": "MIT",
-	"require": {
-		"plugins/gravityforms": "*",
-		"plugins/gravityformsquiz": "*"
-	},
-	"scripts": {
-		"site:custom" : []
-	}
+  "name": "greenpeace/planet4-gutenberg",
+  "description": "Greenpeace P4 gutenberg",
+  "license": "MIT",
+  "require": {
+    "plugins/gravityforms": "*",
+    "plugins/gravityformsquiz": "*"
+  },
+  "extra": {
+    "wp-version": "5.9"
+  },
+  "scripts": {
+    "site:custom" : []
+  }
 }
