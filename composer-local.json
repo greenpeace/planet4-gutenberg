@@ -3,8 +3,6 @@
   "description": "Greenpeace P4 gutenberg",
   "license": "MIT",
   "require": {
-    "plugins/gravityforms": "*",
-    "plugins/gravityformsquiz": "*"
   },
   "extra": {
     "wp-version": "6.0-beta3"
