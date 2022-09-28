@@ -5,7 +5,7 @@
   "require": {
   },
   "extra": {
-    "wp-version": "6.1-beta1"
+    "wp-version": "6.1-beta2"
   },
   "scripts": {
     "site:custom" : []
