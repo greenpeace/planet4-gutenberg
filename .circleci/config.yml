@@ -114,6 +114,7 @@ job_definitions:
       - run: make prepare-helm
       - run: make backup
       - run: BUILD_TAG=build-$(cat /tmp/workspace/var/circle-build-num) make deploy-helm
+      - run: make reset
       - run: make post-deploy
       - run:
           name: Extract workflow from commit message
