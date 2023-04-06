@@ -6,7 +6,7 @@
     "greenpeace/planet4-child-theme-international" : "dev-gp-font"
   },
   "extra": {
-    "wp-version": "6.2-RC1"
+    "wp-version": "6.2"
   },
   "scripts": {
     "site:custom" : []
