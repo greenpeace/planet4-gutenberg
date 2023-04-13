@@ -6,6 +6,21 @@ parameters:
     type: boolean
     default: false
 
+  run_develop:
+    default: true
+    type: boolean
+  run_create_test_user:
+    default: false
+    type: boolean
+
+  run_delete_test_user:
+    default: false
+    type: boolean
+
+  unhold:
+    default: ""
+    type: string
+
 docker_auth: &docker_auth
   username: $DOCKERHUB_USERNAME
   password: $DOCKERHUB_PASSWORD
@@ -156,6 +171,55 @@ jobs:
       <<: *common_environment
       <<: *develop_environment
     <<: *deploy_steps
+  create-test-user:
+    working_directory: ~/
+    docker:
+      - image: greenpeaceinternational/p4-builder:latest
+        auth:
+          <<: *docker_auth
+    environment:
+      <<: *common_environment
+      <<: *develop_environment
+      WORKFLOW_ID: << pipeline.parameters.unhold >>
+    steps:
+      - checkout:
+          path: /home/circleci/checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: activate-gcloud-account.sh
+      - run: make prepare-helm
+      - run:
+          name: Create test user
+          command: /home/circleci/bin/test_account_add.sh
+      - run:
+          name: Unhold e2e test job
+          command: |
+            if [[ -n $WORKFLOW_ID ]]; then
+              echo "$WORKFLOW_ID"
+              echo $WORKFLOW_ID > /tmp/workspace/approve_workflow
+            fi
+      - approve_job:
+          job_name: test-user-ready
+
+  delete-test-user:
+    working_directory: ~/
+    docker:
+      - image: greenpeaceinternational/p4-builder:latest
+        auth:
+          <<: *docker_auth
+    environment:
+      <<: *common_environment
+      <<: *develop_environment
+    steps:
+      - checkout:
+          path: /home/circleci/checkout
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: activate-gcloud-account.sh
+      - run: make prepare-helm
+      - run:
+          name: Delete test user
+          command: /home/circleci/bin/test_account_remove.sh
 
 workflow_definitions:
   on_develop_commit: &on_develop_commit
@@ -166,6 +230,7 @@ workflow_definitions:
 
 workflows:
   develop:
+    when: << pipeline.parameters.run_develop >>
     jobs:
       - build-develop:
           <<: *on_develop_commit
@@ -173,3 +238,14 @@ workflows:
           <<: *on_develop_commit
           requires:
             - build-develop
+  create-test-user:
+    when: << pipeline.parameters.run_create_test_user >>
+    jobs:
+      - create-test-user:
+          context: org-global
+
+  delete-test-user:
+    when: << pipeline.parameters.run_delete_test_user >>
+    jobs:
+      - delete-test-user:
+          context: org-global
