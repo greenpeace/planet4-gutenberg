@@ -2,11 +2,8 @@
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
   "license": "MIT",
-  "require": {
-    "greenpeace/planet4-child-theme-international" : "dev-gp-font"
-  },
   "extra": {
-    "wp-version": "6.2"
+    "wp-version": "6.3-RC2"
   },
   "scripts": {
     "site:custom" : []
