@@ -1,5 +1,9 @@
 {
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
-  "license": "MIT"
+  "license": "MIT",
+  "require": {
+    "plugins/sitepress-multilingual-cms": "*",
+    "plugins/wpml-string-translation": "*"
+  }
 }
