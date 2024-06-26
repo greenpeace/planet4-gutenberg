@@ -5,6 +5,7 @@
   "require": {
     "plugins/sitepress-multilingual-cms": "*",
     "plugins/wpml-string-translation": "*",
-    "wpackagist-plugin/enable-media-replace": "4.1.5"
+    "wpackagist-plugin/enable-media-replace": "4.1.5",
+    "plugins/wpml-elasticpress": "*"
   }
 }
