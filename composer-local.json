@@ -2,10 +2,10 @@
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
   "license": "MIT",
+  "extra": {
+    "wp-version": "6.6"
+  },
   "require": {
-    "plugins/sitepress-multilingual-cms": "*",
-    "plugins/wpml-string-translation": "*",
-    "wpackagist-plugin/enable-media-replace": "4.1.5",
-    "plugins/wpml-elasticpress": "*"
+    "wpackagist-plugin/enable-media-replace": "4.1.5"
   }
 }
