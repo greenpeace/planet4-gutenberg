@@ -2,12 +2,7 @@
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
   "license": "MIT",
-  "extra": {
-    "wp-version": "6.6.1"
-  },
   "require": {
-		"greenpeace/planet4-master-theme": "dev-PLANET-7565_fix_automated_tests_for_wp_6.6",
-		"greenpeace/planet4-plugin-gutenberg-blocks": "dev-PLANET-7565_fix-regenerator-runtime-error",
     "wpackagist-plugin/enable-media-replace": "4.1.5"
   }
 }
