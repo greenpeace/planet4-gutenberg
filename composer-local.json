@@ -1,5 +1,8 @@
 {
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
-  "license": "MIT"
+  "license": "MIT",
+  "extra": {
+    "wp-version": "6.7.1"
+  }
 }
