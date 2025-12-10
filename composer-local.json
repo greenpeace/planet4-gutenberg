@@ -3,6 +3,6 @@
   "description": "Greenpeace P4 gutenberg",
   "license": "MIT",
   "extra": {
-    "wp-version": "6.8.1"
+    "wp-version": "6.9"
   }
 }
