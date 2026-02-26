@@ -1,18 +1,5 @@
 {
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
-  "license": "MIT",
-  "extra": {
-    "wp-version": "6.9"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.org"
-    }
-  ],
-  "require": {
-    "wpackagist-plugin/was-this-article-helpful" : "1.*",
-    "wpackagist-plugin/daext-helpful": "1.*"
-  }
+  "license": "MIT"
 }
