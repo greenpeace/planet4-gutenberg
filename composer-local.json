@@ -1,5 +1,8 @@
 {
   "name": "greenpeace/planet4-gutenberg",
   "description": "Greenpeace P4 gutenberg",
-  "license": "MIT"
+  "license": "MIT",
+  "require": {
+    "greenpeace/planet4-master-theme": "dev-fix/toc-frontend-timeline-block"
+  }
 }
