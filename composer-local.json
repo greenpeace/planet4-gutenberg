@@ -17,5 +17,8 @@
   ],
   "require": {
     "plugins/scrollytelling": "*"
-  }
+  },
+	"extra": {
+		"wp-version": "7.1.2"
+	}
 }
