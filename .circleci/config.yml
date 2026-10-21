@@ -38,7 +38,6 @@ job_environments:
     APP_HOSTPATH: gutenberg
     CONTAINER_PREFIX: planet4-gutenberg
     WP_DB_NAME_PREFIX: planet4-gutenber_wordpress
-    PARENT_VERSION: upload-progress
   develop_environment: &develop_environment
     APP_ENVIRONMENT: development
     APP_HOSTNAME: www-dev.greenpeace.org
